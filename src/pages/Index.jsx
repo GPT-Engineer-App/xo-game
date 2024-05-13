@@ -31,7 +31,7 @@ const Index = () => {
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
       <VStack spacing={4}>
-        <Text fontSize="2xl">{winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? "X" : "O"}`}</Text>
+        <Text fontSize="2xl">{winner ? `Winner: ${winner}` : board.every((square) => square !== null) ? "Draw" : `Next player: ${xIsNext ? "X" : "O"}`}</Text>
         <SimpleGrid columns={3} spacing={2}>
           {Array.from({ length: 9 }).map((_, index) => (
             <Box key={index}>{renderSquare(index)}</Box>
