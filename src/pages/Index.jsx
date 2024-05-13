@@ -29,9 +29,11 @@ const Index = () => {
   };
 
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" bg={winner ? "green.300" : board.every((square) => square !== null) ? "orange.300" : "gray.100"}>
       <VStack spacing={4}>
-        <Text fontSize="2xl">{winner ? `Winner: ${winner}` : board.every((square) => square !== null) ? "Draw" : `Next player: ${xIsNext ? "X" : "O"}`}</Text>
+        <Text fontSize="4xl" color={winner || board.every((square) => square !== null) ? "yellow.500" : "gray.800"}>
+          {winner ? `🎉 Winner: ${winner} 🎉` : board.every((square) => square !== null) ? "🤝 It's a Draw! 🤝" : `Next player: ${xIsNext ? "X" : "O"}`}
+        </Text>
         <SimpleGrid columns={3} spacing={2}>
           {Array.from({ length: 9 }).map((_, index) => (
             <Box key={index}>{renderSquare(index)}</Box>
